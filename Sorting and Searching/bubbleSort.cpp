@@ -1,57 +1,45 @@
-/*ARRAYS-BUBBLE SORT*/
-/*Take as input N, the size of array. Take N more inputs and store that in an array. Write a function that bubble sorts the array. Print the elements of sorted array.
+/*
+ * bubbleSort.cxx
+ * 
+ * Copyright 2020 rohit <rohit@DESKTOP-UQOMAVC>
+ */
 
-1.It reads a number N.
-2.Take Another N numbers as input and store them in an Array.
-3.Bubble sort the array and print the Array.
-
-Input Format:
-Constraints:
-N cannot be Negative. Range of Numbers can be between -1000000000 to 100000000.
-
-Output Format
-Sample Input
-4
-2
--18
-45
-30
-Sample Output
--18
-2
-30
-45*/
 
 #include <iostream>
-using namespace std;
+#include <vector>
 
-void swap(int &a, int &b){
-    int temp = a;
-    a = b;
-    b = temp;
-}
+using namespace std ;
 
-void bubbleSort(int arr[], int n){
-    for(int i = 0; i < n; i++){
-        for(int j = 0; j < n-i-1; j++){
-            if(arr[j] > arr[j+1]){
-                swap(arr[j], arr[j+1]);
-            }
-        }
-    }
-}
+void bubbleSort(vector<int> &arr) ;
 
-int main(int argc, char const *argv[])
+int main(int argc, char **argv)
 {
-    int n;
-    cin>>n;
-    int arr[n];
-    for(int i = 0; i < n; i++)
-        cin>>arr[i];
-    bubbleSort(arr, n);
-    for (int i = 0; i < n; ++i)
-    {
-        cout<<arr[i]<<" ";
-    }
-    return 0;
+	
+	vector<int> arr = {9,8,7,6,5,0,10,15,13,12,10,2,2,2,2,4,3,2,1,1} ;
+	
+	bubbleSort(arr) ;
+	
+	for(int k: arr) {
+				cout << k << " " ;
+	}
+	
+	return 0;
 }
+
+void bubbleSort(vector<int> &arr) {
+	int n = arr.size() ;
+	for(int i = 0 ; i < n ; i++) {
+		bool isSorted = true ;
+		for(int j = 0 ; j < n - i - 1 ; j++) {
+			if(arr[j]>arr[j+1]){
+				std::swap(arr[j],arr[j+1]) ;
+				isSorted = false ;
+			}
+		}
+		
+		if(isSorted)
+			break ;
+		
+	}
+}
+
